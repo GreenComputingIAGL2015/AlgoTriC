@@ -20,7 +20,9 @@ int* trier(int tab[], int taille) {
 		int *v = trier(dupTab(tab,taille/2,taille),tailleV);
 		int a = 0;
 		int b = 0;
-		for (int i=0;i<taille;i++) {
+		int i=0;
+		
+		for (i=0;i<taille;i++) {
 			if ((a < tailleU) && (b >= tailleV || u[a] <= v[b])) {
 				tab[i] = u[a];
 				a = a+1;
@@ -36,24 +38,37 @@ int* trier(int tab[], int taille) {
 }
 
 void afficher(int * tab,int taille) {
-	for (int i =0;i<taille;i++) {
+    int i;
+     
+	for (i =0;i<taille;i++) {
 		printf("%d ",tab[i]);
 	}
 	printf("\n");
 }
 
-void main() {
+int main() {
 	printf("Tapez la taille du tableau que vous souhaitez ?\n");
-	int n = 0;
-	scanf("%d",&n);
-	int *tab = malloc(n*sizeof(int));
-	int indiceMax = n-1;
-	for (int i=0;i<n;i++) {
-		tab[i] = 100*rand();	
+	int tabNbElements = 0;
+	scanf("%d", &tabNbElements);
+	int *tab = malloc(tabNbElements * sizeof(int));
+	int indiceMax = tabNbElements - 1;
+	int i;
+	
+	// initialize with random number rage : 1 - 100
+    srand (time(NULL));
+    int rangeMin = 1;
+    int rangeMax = 100;
+	
+	for (i=0; i < tabNbElements; i++) {
+		tab[i] = rangeMax + rand() / (RAND_MAX / (rangeMin - rangeMax + 1) + 1);
 	}
-	afficher(tab,n);
-	trier(tab,n);
+	
+	
+	afficher(tab, tabNbElements);
+	trier(tab, tabNbElements);
 	printf("\n");
-	afficher(tab,n);
+	afficher(tab, tabNbElements);
 	free(tab);
+	
+	system("pause");
 }
