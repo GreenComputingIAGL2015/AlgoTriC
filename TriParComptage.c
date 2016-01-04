@@ -78,7 +78,7 @@ int main() {
 	int i;
     srand (time(NULL));
     int rangeMin = 1;
-    int rangeMax = 100;
+    int rangeMax = tabNbElements;
 	
 	for (i=0; i < tabNbElements; i++) {
 		tab[i] = rangeMax + rand() / (RAND_MAX / (rangeMin - rangeMax + 1) + 1);
@@ -98,7 +98,7 @@ int main() {
 	// print sorted table
 	printf("Tableau avant tri : [");
 	afficher(tab, tabNbElements);
-	printf("]\n");
+	printf("]+++++++++++++++++\n");
 	
 	free(tab);
 	system("pause");

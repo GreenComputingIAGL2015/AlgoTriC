@@ -57,7 +57,7 @@ int main() {
 	// initialize with random number rage : 1 - 100
     srand (time(NULL));
     int rangeMin = 1;
-    int rangeMax = 100;
+    int rangeMax = tabNbElements;
 	
 	for (i=0; i < tabNbElements; i++) {
 		tab[i] = rangeMax + rand() / (RAND_MAX / (rangeMin - rangeMax + 1) + 1);
